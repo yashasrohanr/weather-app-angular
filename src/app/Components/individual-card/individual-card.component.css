@@ -1,0 +1,68 @@
+#divWeatherMain {
+  margin: 20px auto;
+  display: inline-block;
+  border-radius: 10px;
+  width: 250px;
+  height: 380px;
+  background: rgb(0, 0, 0);
+  /* background: linear-gradient(180deg, rgb(243, 201, 201) 0%, rgb(107, 106, 141) 75%, rgb(166, 206, 179) 100%); */
+  background-color: rgb(12, 61, 15);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.weatherWidgetRow {
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.sun {
+  margin-top: 10px;
+  color: yellow;
+  filter: drop-shadow(1px 1px 10px yellow);
+}
+
+.moon {
+  margin-top: 10px;
+  color: white;
+  filter: drop-shadow(1px 1px 10px white);
+}
+
+.cloudDiv {
+  margin-top: -40px;
+}
+
+.cloud {
+  color: white;
+  filter: drop-shadow(1px 1px 5px rgb(104, 175, 197));
+  
+}
+
+button {
+  margin-left: 15%;
+  font-size: 13px;
+  padding: 5px 15px;
+  border-radius: 10px;
+    cursor: pointer;
+}
+.button:hover {
+  opacity: 0.5;
+}
+
+.resetButton {
+  background-color: #f44336;
+}
+.editButton {
+  background-color: #008cba;
+}
+.searchBar{
+    margin: 5px 10%;
+    /* display: inline; */
+
+}
+label{
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}

@@ -1,0 +1,30 @@
+<div class="container">
+  <button
+    class="btn btn-primary my-3 mx-2 d-flex"
+    type="button"
+    (click)="onsomtng()"
+  >
+    Add card
+  </button>
+  <div class="container">
+    <!-- Desired cards :{{ desired_cards }} Current cards : {{ current_cards }} -->
+    <div class="row">
+      <div class="col-sm">
+        <app-new-card></app-new-card>
+        <app-new-card></app-new-card>
+        <app-new-card></app-new-card>
+      </div>
+      <div class="col-sm">
+        <app-new-card></app-new-card>
+        <app-new-card></app-new-card>
+        <app-new-card></app-new-card>
+      </div>
+      <div class="col-sm" >
+        <app-new-card></app-new-card>
+        <app-new-card></app-new-card>
+        <app-new-card></app-new-card>
+      </div>
+    </div>
+    <!-- <app-new-card *ngIf="addMore === true"></app-new-card> -->
+  </div>
+</div>
