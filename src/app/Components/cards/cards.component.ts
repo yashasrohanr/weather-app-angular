@@ -1,30 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { weatherdata } from 'src/app/weatherData';
+
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.css'],
 })
 export class CardsComponent implements OnInit {
-  initial_cards: number = 5;
-  current_cards: number = 5;
-  desired_cards: number = 5;
-  addMore:boolean = false;
-  constructor() {
-    // document.getElementById('cardsDisplay')!.innerHTML =
-    //   '<app-new-card></app-new-card><app-new-card></app-new-card>';
-  }
+  initial_cards: number = 9;
+  current_cards: number = 9;
+
+  constructor() {}
 
   ngOnInit(): void {
-    // document.getElementById('cardsDisplay')!.innerHTML =
-    //   '<app-new-card></app-new-card><app-new-card></app-new-card>';
+    let x = localStorage.getItem('Current_CARDS');
+    let y = parseInt(x != null ? x : '9');
+    // console.log('Current number of cards  : ' + y);
+    this.current_cards = y;
   }
-  addCard(): any {
-    console.log('add a card clicked');
+  onAddCard() {
+    this.current_cards++;
+    console.log('added card number : ' + this.current_cards);
+    localStorage.setItem('Current_CARDS', JSON.stringify(this.current_cards));
   }
-  onsomtng(){
-    this.desired_cards++;
-    if(this.desired_cards > this.current_cards) this.addMore = true;
+  onDeleteCard() {
+    if (this.current_cards > 30) this.current_cards = 30;
+    if (this.current_cards === 0) {
+      console.log('no more cards to delete');
+    } else {
+      console.log('deleted card number : ' + this.current_cards);
+      this.current_cards--;
+      localStorage.setItem('Current_CARDS', JSON.stringify(this.current_cards));
+    }
   }
+
 }

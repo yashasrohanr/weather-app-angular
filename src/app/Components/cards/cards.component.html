@@ -1,30 +1,56 @@
+<!-- this page displays a max of 30 weather cards  -->
 <div class="container">
   <button
     class="btn btn-primary my-3 mx-2 d-flex"
     type="button"
-    (click)="onsomtng()"
+    (click)="onAddCard()"
   >
-    Add card
+    Add card {{current_cards +1}}
   </button>
-  <div class="container">
-    <!-- Desired cards :{{ desired_cards }} Current cards : {{ current_cards }} -->
-    <div class="row">
-      <div class="col-sm">
-        <app-new-card></app-new-card>
-        <app-new-card></app-new-card>
-        <app-new-card></app-new-card>
-      </div>
-      <div class="col-sm">
-        <app-new-card></app-new-card>
-        <app-new-card></app-new-card>
-        <app-new-card></app-new-card>
-      </div>
-      <div class="col-sm" >
-        <app-new-card></app-new-card>
-        <app-new-card></app-new-card>
-        <app-new-card></app-new-card>
-      </div>
+  <button
+    class="btn btn-primary my-3 mx-2 d-flex"
+    type="button"
+    (click)="onDeleteCard()"
+  >
+    Delete card number {{current_cards}}
+  </button>
+   <span>Current number of weather cards : {{current_cards >=30 ? 30 : current_cards}}</span>
+  <div class="row">
+    <div class="col-sm">
+      <app-new-card *ngIf="current_cards >= 1" [current_cards] = "1"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 4" [current_cards] = "4"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 7" [current_cards] = "7"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 10" [current_cards] = "10"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 13" [current_cards] = "13"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 16" [current_cards] = "16"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 19" [current_cards] = "19"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 22" [current_cards] = "22"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 25" [current_cards] = "25"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 28" [current_cards] = "28"></app-new-card>
     </div>
-    <!-- <app-new-card *ngIf="addMore === true"></app-new-card> -->
+    <div class="col-sm">
+      <app-new-card *ngIf="current_cards >= 2" [current_cards] = "2"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 5" [current_cards] = "5"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 8" [current_cards] = "8"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 11" [current_cards] = "11"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 14" [current_cards] = "14"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 17" [current_cards] = "17"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 20" [current_cards] = "20"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 23" [current_cards] = "23"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 26" [current_cards] = "26"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 29" [current_cards] = "29"></app-new-card>
+    </div>
+    <div class="col-sm">
+      <app-new-card *ngIf="current_cards >= 3" [current_cards] = "3"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 6" [current_cards] = "6"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 9" [current_cards] = "9"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 12" [current_cards] = "12"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 15" [current_cards] = "15"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 18" [current_cards] = "18"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 21" [current_cards] = "21"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 24" [current_cards] = "24"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 27" [current_cards] = "27"></app-new-card>
+      <app-new-card *ngIf="current_cards >= 30" [current_cards] = "30"></app-new-card>
+    </div>
   </div>
 </div>

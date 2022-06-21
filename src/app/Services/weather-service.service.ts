@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { weatherData1 } from '../models/weather.model';
 
+// this service fetches weather data for the new-card-component
+
 @Injectable({
   providedIn: 'root',
 })

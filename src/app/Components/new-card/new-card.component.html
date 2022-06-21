@@ -1,7 +1,7 @@
 <!-- this is the part when weather is displayed or active == 2 -->
 <div
-  class="card mx-2 my-2"
-  style="width: 20rem; height: 30rem"
+  class="card mx-2 my-2 bg-light text-dark "
+  style="width: 20rem; height: 30rem; border-radius: 20;"
   *ngIf="weather_from_api.active === 2"
 >
   <i
@@ -48,7 +48,7 @@
 <!-- this below part is when active = 1 or search bar state -->
 
 <div
-  class="card mx-2 my-2"
+  class="card mx-2 my-2 bg-light text-dark "
   style="width: 20rem; height: 30rem"
   *ngIf="weather_from_api.active === 1"
 >
@@ -82,13 +82,13 @@
 
 <!-- this is for a blank card -->
 <div
-  class="card mx-2 my-2"
+  class="card mx-2 my-2 bg-light text-dark "
   style="width: 20rem; height: 30rem"
   *ngIf="weather_from_api.active === 0"
 >
   <div class="card-body" (click)="onBlankCardClick()">
-    <h5 class="card-title text-info d-flex justify-content-center my-5">
-      Click card to search for city weather
+    <h5 class="card-title text-info d-flex justify-content-center my-5 ">
+      Click anywhere on card to search
     </h5>
   </div>
 </div>

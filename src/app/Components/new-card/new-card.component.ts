@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { weatherdata } from 'src/app/weatherData';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { WeatherServiceService } from 'src/app/Services/weather-service.service';
-import { weatherData1 } from 'src/app/models/weather.model';
-import { observable } from 'rxjs';
+// this imports weather service created in the services folder to fetch weather from an api
 @Component({
   selector: 'app-new-card',
   templateUrl: './new-card.component.html',
@@ -14,8 +11,8 @@ export class NewCardComponent implements OnInit {
   weather_from_api: any;
   cityname: string = 'Delhi';
 
-
-
+  @Input() public current_cards: any;
+  //the constructor sets a default value of the weather_from_api variable 
   constructor(weatherService: WeatherServiceService, private http: HttpClient) {
     this.weather_from_api = {
       active: 0,
@@ -64,9 +61,26 @@ export class NewCardComponent implements OnInit {
     };
   }
   weatherService: any;
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // console.warn(' this is from new-card-component ' + this.current_cards);
+    // this item is fetched from local storage to preserve 
+    // data and state on page reload hence included here
+    let a = localStorage.getItem('card' + this.current_cards);
+    if (a != null) {
+      let b = JSON.parse(a);
+      // console.log(b?.cityNAME);
+      // console.log(b);
+      if (this.weather_from_api != null) {
+        // console.log(this.weather_from_api);
+        this.weather_from_api = b;
+      }
+    }
+  }
   onreset() {
+    // here too its saved in localstorage for preserving reset state on page reload
     this.weather_from_api.active = 0;
+    let x = JSON.stringify(this.weather_from_api);
+    localStorage.setItem('card' + this.current_cards, x);
   }
   onSearchPress(userInput: any) {
     // console.log(userInput.value.input_city);
@@ -74,19 +88,26 @@ export class NewCardComponent implements OnInit {
       'https://api.openweathermap.org/data/2.5/weather?q=' +
       userInput.value.input_city +
       '&appid=7cbb834811702b21cd936ca37ec64168';
-    console.log(api_url);
     this.http.get<any>(api_url).subscribe((data: any) => {
       this.weather_from_api = data;
       this.weather_from_api.active = 2;
-      console.log(userInput.value.input_city);
+      // console.log(userInput.value.input_city);
       this.weather_from_api.cityNAME = userInput.value.input_city;
-      
+      let x = JSON.stringify(this.weather_from_api);
+      // this.key = "card" + this.cardNumber;
+      localStorage.setItem('card' + this.current_cards, x);
     });
   }
   onBlankCardClick() {
+    // here too its saved in localstorage for preserving blank state on page reload
     this.weather_from_api.active = 1;
+    let x = JSON.stringify(this.weather_from_api);
+    localStorage.setItem('card' + this.current_cards, x);
   }
-  onEdit(){
+  onEdit() {
+    // here too its saved in localstorage for preserving edit state on page reload
     this.weather_from_api.active = 1;
+    let x = JSON.stringify(this.weather_from_api);
+    localStorage.setItem('card' + this.current_cards, x);
   }
 }
